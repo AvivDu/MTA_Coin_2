@@ -35,7 +35,7 @@ unsigned long FakeMiner::mineBlock()
     while (true)
     {
         miner_block = block_to_be_mined;
-        pthread_mutex_lock(&newBlockByServer_mutex);
+        pthread_mutex_lock(&newBlockByServer_mutex);//lock to prevent the server from changing the block while mining
         miner_block.relayed_by = id;
         crc = calculateCRC32(miner_block);
         miner_block.hash = crc;

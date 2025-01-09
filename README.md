@@ -15,6 +15,26 @@ Mining involves calculating a hash (checksum) on a given block and appending it 
 ### Proof of Work
 Proof of Work (PoW) is a piece of data that is difficult and time-consuming to produce but easy for others to verify. It satisfies certain requirements, often involving numerous trials and errors before a valid PoW is generated. Bitcoin, for example, requires miners to find a hash with a specific number of leading zeros. In this project, we use CRC32 and check for leading zero bits.
 
+## Building and Running the Project
+
+### Prerequisites
+- Ensure you have `make` and a C++ compiler installed on your system.
+- Install `zlib` if it is not already installed.
+
+### Building the Project
+1. Open a terminal in the root directory of your project.
+2. Run the following command to build the project:
+   make
+
+### Running the Project
+After the build completes, run the executable:
+./main
+
+(This will start the miner and server threads, and you should see output indicating the progress of mining and block addition.)
+
+To kill the program press ctrl+c
+
+
 ## Assignment Description
 This project involves writing a C/C++ program divided into 4 miner threads and 1 server thread.
 ## this project uses

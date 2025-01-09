@@ -8,10 +8,10 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(Threads REQUIRED)
 
 # Add the source files
-set(SOURCES main.cpp Miner.cpp Server.cpp BLOCK_T&Globals.cpp)
+set(SOURCES main.cpp Miner.cpp Server.cpp BLOCK_T_Globals.cpp)
 
 # Add the header files
-set(HEADERS Miner.h Server.h BLOCK_T&Globals.h)
+set(HEADERS Miner.h Server.h BLOCK_T_Globals.h)
 
 # Create the executable
 add_executable(funCoin ${SOURCES} ${HEADERS})

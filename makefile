@@ -1,29 +1,18 @@
 CC = g++
-CFLAGS = -Wall -g
-LDFLAGS = -lz
+CFLAGS = -Wall -g -std=c++11
+LDFLAGS = -lz -lpthread
 
-all: main Miner Server BLOCK_T&Globals
+SOURCES = main.cpp Miner.cpp Server.cpp BLOCK_T_Globals.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+EXECUTABLE = funCoin
 
-BLOCK_T&Globals: BLOCK_T&Globals.o
-	$(CC) $(CFLAGS) BLOCK_T&Globals.o -o BLOCK_T&Globals $(LDFLAGS)
-Server: Server.o
-	$(CC) $(CFLAGS) Server.o -o Server $(LDFLAGS)
-Miner: Miner.o
-	$(CC) $(CFLAGS) Miner.o -o Miner $(LDFLAGS)
-main: main.o
-	$(CC) $(CFLAGS) main.o -o main $(LDFLAGS)
+all: $(EXECUTABLE)
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
-Miner.o: Miner.cpp
-	$(CC) $(CFLAGS) -c Miner.cpp
-
-Server.o: Server.cpp
-	$(CC) $(CFLAGS) -c Server.cpp
-
-BLOCK_T&Globals.o: BLOCK_T&Globals.cpp
-	$(CC) $(CFLAGS) -c BLOCK_T&Globals.cpp
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f main.o main Miner.o Miner Server.o Server
+	rm -f $(OBJECTS) $(EXECUTABLE)
